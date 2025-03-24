@@ -1,0 +1,51 @@
+[
+    {
+        "codigo": "PROD-8698",
+        "nombre": "pan de queso",
+        "categoria": "pan",
+        "precio": 600.0,
+        "stock": 60
+    },
+    {
+        "codigo": "PROD-5061",
+        "nombre": "pan de queso",
+        "categoria": "pan ",
+        "precio": 500.0,
+        "stock": 40
+    },
+    {
+        "codigo": "PROD-7978",
+        "nombre": "cascarita",
+        "categoria": "pan",
+        "precio": 400.0,
+        "stock": 90
+    },
+    {
+        "codigo": "PROD-1703",
+        "nombre": "pastel de zanahoria",
+        "categoria": "pastel",
+        "precio": 5000.0,
+        "stock": 40
+    },
+    {
+        "codigo": "PROD-5348",
+        "nombre": "pan galleta",
+        "categoria": "pan",
+        "precio": 1500.0,
+        "stock": 2
+    },
+    {
+        "codigo": "PROD-4514",
+        "nombre": "frances",
+        "categoria": "pan",
+        "precio": 4000.0,
+        "stock": 50
+    },
+    {
+        "codigo": "PROD-6742",
+        "nombre": "pan pita",
+        "categoria": "pan",
+        "precio": 400.0,
+        "stock": 50
+    }
+]
