@@ -9,7 +9,9 @@ def menu_pedidos():
         print("\n=== Gestión de Pedidos ===")
         print("1. Crear pedido")
         print("2. Ver pedidos")
-        print("3. Volver al menú principal")
+        print("3. Filtrar pedido")
+        print("4. Eliminar pedido")
+        print("5. Volver al menú principal")
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
@@ -17,10 +19,13 @@ def menu_pedidos():
         elif opcion == "2":
             ver_pedidos()
         elif opcion == "3":
+            filtrar_pedido()
+        elif opcion == "4":
+            eliminar_pedido()
+        elif opcion == "5":
             break
         else:
-            print("Opción no válida.")
-
+            print("Opción no válida.") 
 def crear_pedido():
     pedidos = data.cargar_datos(ARCHIVO_PEDIDOS)
     productos = data.cargar_datos(ARCHIVO_PRODUCTOS)
@@ -38,9 +43,11 @@ def crear_pedido():
         print("Producto no encontrado.")
         return
     
-    if not funciones.verificar_stock(producto["stock"], cantidad):
-        print("Stock insuficiente.")
+    if cantidad > producto["stock"]:
+        print("Error: Stock insuficiente.")
         return
+    
+    
 
     codigo_pedido = funciones.generar_codigo("PED")
     pedido = {
@@ -62,3 +69,32 @@ def ver_pedidos():
     pedidos = data.cargar_datos(ARCHIVO_PEDIDOS)
     for p in pedidos:
         print(f"Código: {p['codigo']}, Producto: {p['producto']}, Cantidad: {p['cantidad']}")
+
+
+def filtrar_pedido():
+    pedidos = data.cargar_datos(ARCHIVO_PEDIDOS)
+    codigo = input("Ingrese el código del pedido: ")
+    pedido = next((p for p in pedidos if p["codigo"] == codigo), None)
+
+    if not pedido:
+        print("Pedido no encontrado.")
+        return
+
+    print(f"Código: {pedido['codigo']}, Producto: {pedido['producto']}, Cantidad: {pedido['cantidad']}")
+    
+    return pedido
+
+def eliminar_pedido():  
+    
+    pedidos = data.cargar_datos(ARCHIVO_PEDIDOS)
+    productos = data.cargar_datos(ARCHIVO_PRODUCTOS)
+    pedido = filtrar_pedido()
+    if pedido:
+        producto = next((p for p in productos if p["codigo"] == pedido["producto"]), None)
+        producto["stock"] += pedido["cantidad"]
+        data.guardar_datos(ARCHIVO_PRODUCTOS, productos)
+        pedidos.remove(pedido)
+        data.guardar_datos(ARCHIVO_PEDIDOS, pedidos)
+        print("Pedido eliminado con éxito.")
+        
+        

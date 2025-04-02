@@ -8,5 +8,15 @@
         "codigo": "PED-2154",
         "producto": "PROD-5348",
         "cantidad": 118
+    },
+    {
+        "codigo": "PED-9274",
+        "producto": "prod-1081",
+        "cantidad": 6
+    },
+    {
+        "codigo": "PED-1922",
+        "producto": "prod-1081",
+        "cantidad": 5
     }
 ]
